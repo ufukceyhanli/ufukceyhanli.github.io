@@ -45,4 +45,5 @@ experiences:
     - Process, analyze and report of BOM data of the vehicle programs weekly. 
     - BOM is a large and live data set including all the parts of the vehicle and it properties (id,cost,count,supplier,etc. ) which supports development,finance and manufacturing. 
     - Developed a VBA script which checks BOM and list errors. 
-    - Control model finder API. Created a tool making query on a local web page and retrieve info for BOM.
+    - Control model finder API. 
+    - Created a tool making query on a local web page and retrieve info for BOM.
