@@ -1,0 +1,54 @@
+# section information
+section:
+  name: About
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+# your designation
+# your company information
+
+# your resume. this file path should be relative to you "static" directory
+resume: "files/Ufuk-Taner-CEYHANLI-Resume.pdf"
+
+# a summary about you
+summary: 'I am a data science enthusiast with an engineering background and a master degree focusing on analytics. I have almost six years of professional work experience and have been looking for opportunities related to data science. I live in Prague and have a full time working allowance. No matter how complex your data is, i will solve your business problem anyway. Stay connect with me.'
+
+# your social links
+# give as many as you want. use font-awesome for the icons.
+socialLinks:
+- name: Email
+  icon: "fas fa-envelope"
+  url: "tanerceyhanli@gmail.com"
+
+- name: Github
+  icon: "fab fa-github"
+  url: "https://github.com/tanerceyhanli"
+
+- name: LinkedIn
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/tcey"
+
+# your soft skills
+# give the percentage between 50 to 100 with 5 intervals.
+# currently supported colors: blue, yellow, pink, green, sky, orange
+#softSkills:
+#- name: Data Analysis
+#  percentage: 90
+#  color: blue
+#- name: Data Visualization
+#  percentage: 90
+#  color: yellow
+#- name: Machine Learning
+#  percentage: 85
+#  color: pink
+
+# you can also provide color code instead of pre-defined color name
+# - name: Example 1
+#   percentage: 75
+#   color: "#00adb5"
+# - name: Example 2
+#   percentage: 65
+#   color: "#8b8383"
