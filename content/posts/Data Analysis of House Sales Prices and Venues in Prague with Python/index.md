@@ -19,5 +19,5 @@ Prague is one of the most popular cities in Europe with many outstanding views a
 - Cluster municipal parts of Prague.
 
 Github Repository: https://github.com/tanerceyhanli/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague
-Jupter notebook: https://github.com/tanerceyhanli/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague/blob/main/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague.ipynb<b>
+Jup.Notebook: https://github.com/tanerceyhanli/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague/blob/main/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague.ipynb
 Linkedin Post: https://www.linkedin.com/pulse/house-sales-prices-venues-data-analysis-prague-python-ceyhanl%C4%B1/
