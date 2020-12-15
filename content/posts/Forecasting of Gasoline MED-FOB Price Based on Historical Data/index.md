@@ -22,3 +22,7 @@ However, the most important part of the project is applying Box-Jenkins methodol
 
 Solving this problem will help Tupras to increase their production and scheduling accuracy, hence their profit. 
 Moreover, we will try to compare all forecasting techniques and their accuracy.
+
+
+###### Github Repository: https://github.com/tanerceyhanli/Forecasting-of-Gasoline-MED-FOB-Price-Based-on-Historical-Data
+###### Jupyter Notebook: https://github.com/tanerceyhanli/Forecasting-of-Gasoline-MED-FOB-Price-Based-on-Historical-Data/blob/main/Forecasting-of-Gasoline-MED-FOB-Price-Based-on-Historical-Data.ipynb
