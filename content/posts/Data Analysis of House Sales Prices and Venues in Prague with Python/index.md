@@ -18,6 +18,6 @@ Prague is one of the most popular cities in Europe with many outstanding views a
 - Number of different types of venues inside 1km radius of the center of municipal parts
 - Cluster municipal parts of Prague.
 
-Github Repository: https://github.com/tanerceyhanli/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague
-Jup.Notebook: https://github.com/tanerceyhanli/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague/blob/main/House_Sale_Prices_and_Venues_in_Municipal_Parts_of_Prague.ipynb
+Github Repository: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
+Jupyter Notebook: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python/blob/main/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python.ipynb
 Linkedin Post: https://www.linkedin.com/pulse/house-sales-prices-venues-data-analysis-prague-python-ceyhanl%C4%B1/
