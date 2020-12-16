@@ -1,6 +1,6 @@
 ---
 title: "Data Analysis of House Sales Prices and Venues in Prague with Python"
-date: 2020-08-08T08:06:25+06:00
+date: 2020-11-17T08:06:25+06:00
 hero: /posts/data-analysis-of-house-sales-prices-and-venues-in-prague-with-python/prague.jpg
 description: Data Analysis of House Sales Prices and Venues in Prague with Python
 menu:
@@ -93,14 +93,15 @@ After applying k-means clustering from scikit-learn library, the municipal parts
 It seems that Praha 1 and 2 have many venues around the center so these two are distinctive than others. Praha 5 can be separated because it comes forward with bus station availability. Other regions have similar features.
 
 ### Results and Discussions
-There are more people living in Praha 4 and 10 than other municipal regions.
-Average prices for a house in Praha 1 and 6 are higher than others.
-The houses in Praha 1 and Praha 6 are larger than others.
-The price per square meter is high for Praha 1 and 2, compared to others.
-Praha 6 is not in the first ranks for the price per square meter, however it was in the first ranks for the average price for a house, it seems that the reason of this, the size of the houses in Praha 6 is larger.
-2+kk is the most prevalent house type in Prague.
-The most expensive houses are mainly located in Praha 1.
-Based on the venues available, Prague municipal parts can be divided in three clusters.
+- There are more people living in Praha 4 and 10 than other municipal regions.
+- Average prices for a house in Praha 1 and 6 are higher than others.
+- The houses in Praha 1 and Praha 6 are larger than others.
+- The price per square meter is high for Praha 1 and 2, compared to others.
+- Praha 6 is not in the first ranks for the price per square meter, however it was in the first ranks for the average price for a house, it seems that the reason of this, the size of the houses in Praha 6 is larger.
+- 2+kk is the most prevalent house type in Prague.
+- The most expensive houses are mainly located in Praha 1.
+- Based on the venues available, Prague municipal parts can be divided in three clusters.
+
 Do the venues around municipal parts contribute to the price of the house?
 <br/><br/>
 {{< img src="12.png">}}
@@ -113,9 +114,9 @@ Yes. We may divide the municipal parts to 3 groups based on price per square met
 Prague has 57 municipal parts and each of them may have different features. However some of them have more venues around and this contributes to the price of the house.
 
 Ufuk Taner CEYHANLI
-
-11/17/2020
-
+<br/><br/>
+<br/><br/>
+<br/><br/>
 ###### Github Repository: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
 ###### Jupyter Notebook: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python/blob/main/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python.ipynb
 ###### Linkedin Post: https://www.linkedin.com/pulse/house-sales-prices-venues-data-analysis-prague-python-ceyhanl%C4%B1/
