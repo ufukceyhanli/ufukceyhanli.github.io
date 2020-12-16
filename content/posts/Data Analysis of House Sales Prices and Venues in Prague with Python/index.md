@@ -25,70 +25,69 @@ If you visited Prague, probably you might have been to Prague 1, 2 and 3, howeve
 
 Here is a map of Prague regions which I created using Folium library of Python.
 
-IMAGE1
+{{< img src="1.gif">}}
 
 ### Prague Regions
 
 Population of Prague by Municipal Parts
 I downloaded the population data for 57 Municipal Parts of Prague from the web page below and created a pandas data frame. Resource: https://www.citypopulation.de/en/czechrep/praguecity/
 
-{{< img src="2.png" title="something" >}}
+{{< img src="2.png">}}
 
 Let's visualize the population of Prague, with the help of choropleth library.
 
-IMAGE3
+{{< img src="3.png">}}
 
 There are more people living in Praha 4 and 10 than other municipal regions.
 House Sale Prices
 Sreality.com is the most used website for advertisement of houses in Czech Republic. I scraped all available house advertisements in the website for Prague and refined the data. In the data frame below, there are 4390 advertising with its features.
 
-IMAGE4
+{{< img src="4.png">}}
 
 By using latitude and longitude and Prague municipal part geojson file, I received region info for each object and drop title column. First 5 items of the data frame are below.
 
-IMAGE5
+{{< img src="5.png">}}
 
 Let's do some Exploratory Data Analysis excluding the items belonging to the municipal parts having advertisements less than 30.
 
-IMAGE6
+{{< img src="6.png">}}
 
 Average prices for a house in Praha 1 and Praha 6 are higher than others.
 
-IMAGE7
+{{< img src="7.png">}}
 
 The houses in Praha 1 and Praha 6 are larger than others.
 Price per square meter is one of the most popular metrics in the real estates industry.
 
-IMAGE8
+{{< img src="8.png">}}
 
 The price per square meter is high for Praha 1 and Praha 2, compared to others.
 Praha 6 is not in the first ranks for the price per square meter, however it was in the first ranks for the average price for a house, it seems that the reason for this, the size of the houses in Praha 6 is larger.
 
 Here I would like to describe type of the houses in Czech Republic. The naming could be unfamiliar to you but basically,
 
-1+1: one room and one separated kitchen 1+kk: one room and the kitchen is inside room 2+1: two rooms and one separated kitchen 2+kk: two rooms and the kitchen is inside one of the room
+- 1+1: one room and one separated kitchen 1+kk: one room and the kitchen is inside room 
+- 2+1: two rooms and one separated kitchen 2+kk: two rooms and the kitchen is inside one of the room
+- 2+kk is most prevalent house type in Prague.
 
-IMAGE9
-
-2+kk is most prevalent house type in Prague.
 We may wonder where the most expensive houses are located in Prague.
 
-IMAGE10
+{{< img src="9.png">}}
 
 The most expensive houses are mainly located in Praha 1.
 Clustering Municipal Parts by Venues
 In this section, I will cluster municipal parts based on the number of venues in different categories around the center of the municipal parts. I defined the latitude and longitude of the center of the municipal parts and obtained the available venues in 1 km radius of the center point by using Google Places API.
 
-IMAGE11
+{{< img src="10.png">}}
 
 I created a data frame for the first ten municipal parts and its surrounding supermarkets, bus stations, museums, subway stations and pharmacies.
 
-IMAGE12
+{{< img src="11.png">}}
 
 K-means Clustering
 After applying k-means clustering from scikit-learn library, the municipal parts are divided into 3 clusters.
 
-IMAGE13
+{{< img src="12.png">}}
 
 It seems that Praha 1 and 2 have many venues around the center so these two are distinctive than others. Praha 5 can be separated because it comes forward with bus station availability. Other regions have similar features.
 
