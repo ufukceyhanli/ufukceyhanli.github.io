@@ -30,13 +30,13 @@ Here is a map of Prague regions which I created using Folium library of Python.
 
 #### Population of Prague by Municipal Parts
 I downloaded the population data for 57 Municipal Parts of Prague from the web page below and created a pandas data frame. Resource: https://www.citypopulation.de/en/czechrep/praguecity/
-<br/>
+<br/><br/>
 {{< img src="2.png">}}
-<br/>
+<br/><br/>
 Let's visualize the population of Prague, with the help of choropleth library.
-<br/>
+<br/><br/>
 {{< img src="3.png">}}
-<br/>
+<br/><br/>
 There are more people living in Praha 4 and 10 than other municipal regions.
 
 #### House Sale Prices
