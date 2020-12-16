@@ -32,7 +32,7 @@ IMAGE1
 Population of Prague by Municipal Parts
 I downloaded the population data for 57 Municipal Parts of Prague from the web page below and created a pandas data frame. Resource: https://www.citypopulation.de/en/czechrep/praguecity/
 
-/posts/data-analysis-of-house-sales-prices-and-venues-in-prague-with-python/2.jpg
+{{< img src="2.png" title="something" >}}
 
 Let's visualize the population of Prague, with the help of choropleth library.
 
