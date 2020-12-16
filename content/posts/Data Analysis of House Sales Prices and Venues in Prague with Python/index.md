@@ -36,17 +36,17 @@ I downloaded the population data for 57 Municipal Parts of Prague from the web p
 
 Let's visualize the population of Prague, with the help of choropleth library.
 
-{{< img src="3g.png">}}
+{{< img src="3.png">}}
 
 There are more people living in Praha 4 and 10 than other municipal regions.
 House Sale Prices
 Sreality.com is the most used website for advertisement of houses in Czech Republic. I scraped all available house advertisements in the website for Prague and refined the data. In the data frame below, there are 4390 advertising with its features.
 
-{{< img src="4g.png">}}
+{{< img src="3g.png">}}
 
 By using latitude and longitude and Prague municipal part geojson file, I received region info for each object and drop title column. First 5 items of the data frame are below.
 
-{{< img src="3.png">}}
+{{< img src="4g.png">}}
 
 Let's do some Exploratory Data Analysis excluding the items belonging to the municipal parts having advertisements less than 30.
 
