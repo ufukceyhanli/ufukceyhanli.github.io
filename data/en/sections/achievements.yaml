@@ -16,3 +16,6 @@ achievements:
 - title: DataCamp-Intermediate Python
   image: /images/sections/achievements/dc.png
   summary: 
+- title: DataCamp-Intermediate R
+  image: /images/sections/achievements/dc_r.png
+  summary: 
