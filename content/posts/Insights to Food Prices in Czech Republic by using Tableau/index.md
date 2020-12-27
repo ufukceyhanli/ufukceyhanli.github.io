@@ -15,9 +15,6 @@ Although there are many inputs to optimize this problem, price of blend crude oi
 
 The availability of LP-based commercial software for refinery production planning, such as PIMS (Process Industry Modeling System - Bechtel, 1993), has allowed the development of general production plans for the whole refinery, which can be interpreted as general trends. 
 General approach for production and scheduling process has two parts: First, monthly rolling plans for crude selection and conducting refinery operations in line with foreseen demands. Secondly, based on monthly planning, implementing short-term (weekly/daily) plans for finding operating strategies regarding either precise or a good level of knowledge about crude availability, product delivery, operational and logistic constraints, as well as economic issues. One of the most important inputs for monthly planning are price of product and crude oil. However, since the aim is to plan next month, price for both inputs and outputs are actually unknown.
-
- <iframe seamless frameborder="0" src=""
- width = '650' height = '450' scrolling='yes' ><
  
  <iframe src="https://public.tableau.com/views/food-price/Story1?:showVizHome=no&:embed=true"
  width="645" height="800"></iframe>
