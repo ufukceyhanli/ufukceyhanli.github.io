@@ -19,5 +19,5 @@ General approach for production and scheduling process has two parts: First, mon
  <iframe seamless frameborder="0" src=""
  width = '650' height = '450' scrolling='yes' ><
  
- <iframe src="https://public.tableau.com/views/food-price/Story1?:showVizHome=no&:embed=true#3"
+ <iframe src="https://public.tableau.com/views/food-price/Story1?:showVizHome=no&:embed=true"
  width="655" height="955"></iframe>
