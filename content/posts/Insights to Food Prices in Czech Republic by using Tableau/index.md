@@ -1,6 +1,6 @@
 ---
 title: "Insights to Food Prices in Czech Republic by using Tableau"
-date: 2020-07-08T08:06:25+06:00
+date: 2020-12-26T08:06:25+06:00
 hero: /posts/insights-to-food-prices-in-czech-republic-by-using-tableau/tableau.jpg
 description: Insights to Food Prices in Czech Republic by using Tableau
 menu:
