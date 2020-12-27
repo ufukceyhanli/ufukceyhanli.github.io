@@ -23,7 +23,7 @@ body {
   padding: 0;
   position: relative;
   padding-left: 1rem;
-  padding-right: 1rem;
+  padding-right: 0;
 }
 .content {
   background: #e5e9f2;
