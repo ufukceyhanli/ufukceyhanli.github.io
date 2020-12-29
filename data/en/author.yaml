@@ -1,7 +1,7 @@
 # some information about you
 name: "Ufuk Taner CEYHANLI"
 nickname: "Ufuk Taner"
-# greeting message before your name. it will default to "Hi! I am" if not provided
+# greeting message before your name. it will default to "Hi! I am" if not provided.
 greeting: "Hi, I am"
 image: "images/author/tcey.jpg"
 # give your some contact information. they will be used in the footer
