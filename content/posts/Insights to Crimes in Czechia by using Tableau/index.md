@@ -6,7 +6,7 @@ description: Insights to Crimes in Czechia by using Tableau
 menu:
   sidebar:
     name: Insights to Crimes in Czechia by using Tableau
-    identifier: Insights to Food Prices in Czech Republic by using Tableau
+    identifier: Insights to Crimes in Czechia by using Tableau
     weight: 30
 ---
  
