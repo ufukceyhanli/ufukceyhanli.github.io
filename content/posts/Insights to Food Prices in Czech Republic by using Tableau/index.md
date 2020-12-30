@@ -15,5 +15,9 @@ It's beeen only three weeks to move in Prague, however, I've become very familia
 - Examine the change in the for selected foods through out the years 2014-2019
 - Created a dashboard for you interact with the graphs and charts.
  
+ 
+ 
+ 
+ 
  <iframe seamless frameborder="0" src="https://public.tableau.com/views/InsightofFoodPricesinCzechRepublicbyUsingTableau1100x800/Story1?:showVizHome=no&:embed=true"
  width="1100" height="900"></iframe>
