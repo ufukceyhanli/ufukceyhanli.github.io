@@ -1,5 +1,5 @@
 ---
-title: "Forecasting of Gasoline MED-FOB Price Based on Historical Data"
+title: "Forecasting of Gasoline MED-FOB Price Based on Historical Data with Python"
 date: 2020-07-08T08:06:25+06:00
 hero: /posts/forecasting-of-gasoline-med-fob-price-based-on-historical-data/gas.jpg
 description: Forecasting of Gasoline MED-FOB Price Based on Historical Data
