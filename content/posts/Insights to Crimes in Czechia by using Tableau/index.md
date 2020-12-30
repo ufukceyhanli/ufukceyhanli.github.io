@@ -10,4 +10,5 @@ menu:
     weight: 30
 ---
  
- <iframe src="https://public.tableau.com/views/insights-to-crimes-in-czehia/Dashboard1?:showVizHome=no&:embed=true" ></iframe>
+<iframe seamless frameborder="0" src="https://public.tableau.com/views/insights-to-crimes-in-czehia/Dashboard1?:showVizHome=no&:embed=true"
+ width="1000" height="4000" align="center" ></iframe>
