@@ -9,6 +9,10 @@ menu:
     identifier: Insights to Crimes in Czechia by using Tableau
     weight: 30
 ---
- 
+
+Here is the story that I prepared by using Czech Statistical Office's crime data.
+I think there is no need to talk much, you may look the story of the crime data below.
+<br/><br/>
+
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/insights-to-crimes-in-czehia/Dashboard1?:showVizHome=no&:embed=true"
  width="1200" height="4000" ></iframe>
