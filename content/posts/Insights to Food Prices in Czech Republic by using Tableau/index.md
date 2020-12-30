@@ -21,6 +21,5 @@ It's beeen only three weeks to move in Prague, however, I've become very familia
 Here is the dashboard. 
 
 <br/><br/>
-<br/><br/>
  <iframe seamless frameborder="0" src="https://public.tableau.com/views/InsightofFoodPricesinCzechRepublicbyUsingTableau1100x800/Story1?:showVizHome=no&:embed=true"
  width="1100" height="900"></iframe>
