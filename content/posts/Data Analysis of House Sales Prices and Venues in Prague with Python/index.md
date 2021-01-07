@@ -64,8 +64,10 @@ Praha 6 is not in the first ranks for the price per square meter, however it was
 
 Here I would like to describe type of the houses in Czech Republic. The naming could be unfamiliar to you but basically,
 
-- 1+1: one room and one separated kitchen 1+kk: one room and the kitchen is inside room 
-- 2+1: two rooms and one separated kitchen 2+kk: two rooms and the kitchen is inside one of the room
+- 1+1: one room and one separated kitchen 
+- 1+kk: one room and the kitchen is inside room 
+- 2+1: two rooms and one separated kitchen 
+- 2+kk: two rooms and the kitchen is inside one of the room
 - 2+kk is most prevalent house type in Prague.
 <br/><br/>
 {{< img src="7.png">}}
