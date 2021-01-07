@@ -12,7 +12,7 @@ section:
 experiences:
 - company:
     name: Ford R&D Center
-    url: "https://www.example.com"
+    url: "https://www.fordotosan.com.tr/en/operations/randd/randd-centers/sancaktepe-randd-center"
     location: Istanbul
     # company overview
     #overview: Example Co. is a widely recognized company for cloud-native development. It builds tools for Kubernetes.
@@ -32,7 +32,7 @@ experiences:
     
 - company:
     name: Ford R&D Center
-    url: "https://www.example.com"
+    url: "https://www.fordotosan.com.tr/en/operations/randd/randd-centers/sancaktepe-randd-center"
     location: Istanbul
     # company overview
     #overview: Example Co. is a widely recognized company for cloud-native development. It builds tools for Kubernetes.
