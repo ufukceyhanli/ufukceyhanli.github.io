@@ -10,10 +10,6 @@ menu:
     weight: 1
 ---
 
-# Bike Share Demand Prediction
-
-Ufuk Taner CEYHANLI
-
 ## Introduction
 I am going to predict the number of borrowed bikes **in a given day and station** by using 4 available data set below.
 
@@ -2180,4 +2176,3 @@ Or, for the stations with low number predicted demand may be considered to close
 - Availablity of the bike roads in the region of the station
 - Polution
 - Average bike prices in the region
-
