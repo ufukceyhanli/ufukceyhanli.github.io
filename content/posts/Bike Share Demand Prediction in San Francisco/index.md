@@ -35,7 +35,7 @@ What could effect the people to rent a bike?
 
 ## Understanding the Data Set and EDA
 
-I've already performed EDA on the data sets, you can access it via this [link](https://tanerceyhanli.github.io/Bike-Share-Assignment).
+I've already performed EDA on the data sets, you can access it via this [link](https://tanerceyhanli.github.io/Bike-Share-Demand-Prediction-in-San-Francisco).
 
 
 
