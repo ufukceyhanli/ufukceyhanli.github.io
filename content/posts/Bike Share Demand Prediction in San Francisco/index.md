@@ -1,12 +1,12 @@
 ---
-title: "Bike Share Demand Prediction"
+title: "Bike Share Demand Prediction in San Francisco"
 date: 2021-01-05T08:06:25+06:00
-hero: /posts/bike-share-demand-prediction/bs.jpg
-description: Bike Share Demand Prediction
+hero: /posts/bike-share-demand-prediction-in-san-francisco/bs.jpg
+description: Bike Share Demand Prediction in San Francisco
 menu:
   sidebar:
-    name: Bike Share Demand Prediction
-    identifier: Bike Share Demand Prediction
+    name: Bike Share Demand Prediction in San Francisco
+    identifier: Bike Share Demand Prediction in San Francisco
     weight: 1
 ---
 
