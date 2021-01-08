@@ -2081,7 +2081,7 @@ plt.show()
 
 
     
-![png](Bike-Share-Demand-Prediction_files/Bike-Share-Demand-Prediction_60_0.png)
+![png](output_60_0.png)
     
 
 
@@ -2151,7 +2151,7 @@ plot_importances(rfr, "RandomForestRegressor")
 
 
     
-![png](Bike-Share-Demand-Prediction_files/Bike-Share-Demand-Prediction_61_1.png)
+![png](output_61_1.png)
     
 
 
