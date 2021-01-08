@@ -10,5 +10,4 @@ menu:
     weight: 1
 ---
 
- <iframe seamless frameborder="0" src="https://github.com/tanerceyhanli/Bike-Share-Assignment/blob/main/Bike-share-assignment.ipynb"
- width="1100" height="4000"></iframe>
+ <iframe src="https://github.com/tanerceyhanli/Bike-Share-Assignment/blob/main/Bike-share-assignment.ipynb" ></iframe>
