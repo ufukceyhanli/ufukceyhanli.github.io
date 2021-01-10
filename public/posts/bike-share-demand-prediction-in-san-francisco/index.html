@@ -1,0 +1,2248 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bike Share Demand Prediction in San Francisco</title>
+    <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/assets/css/layouts/main.css"/>
+<link rel="stylesheet" href="/assets/css/style.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/site/tcey_logo4.png" />
+
+
+<link rel="stylesheet" href="/assets/css/style.css"/>
+
+    
+<meta name="description" content="Bike Share Demand Prediction in San Francisco" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/assets/css/layouts/single.css"/>
+<link rel="stylesheet" href="/assets/css/navigators/sidebar.css">
+
+
+    
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-185420053-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+  
+
+
+  
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/site/tcey_logo4.png">Ufuk Taner</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/site/tcey_logo4.png" class="d-none" id="main-logo">
+  <img src="/images/site/tcey_logo4.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/bike-share-demand-prediction-in-san-francisco/">Bike Share Demand Prediction in San Francisco</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/data-analysis-of-house-sales-prices-and-venues-in-prague-with-python/">Data Analysis of House Sales Prices and Venues in Prague with Python</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/forecasting-of-gasoline-med-fob-price-based-on-historical-data/">Forecasting of Gasoline MED-FOB Price Based on Historical Data</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/insights-to-crimes-in-czechia-by-using-tableau/">Insights to Crimes in Czechia by using Tableau</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/insights-to-food-prices-in-czech-republic-by-using-tableau/">Insights to Food Prices in Czech Republic by using Tableau</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://tanerceyhanli.github.io/posts/bike-share-demand-prediction-in-san-francisco/bs.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/tcey.jpg'/>
+          <h5 class="author-name">Ufuk Taner CEYHANLI</h5>
+          <p>January 5, 2021</p>
+        </div>
+
+        <div class="title">
+          <h1>Bike Share Demand Prediction in San Francisco</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h2 id="introduction">Introduction</h2>
+<p>I am going to predict the number of borrowed bikes <strong>in a given day and station</strong> by using 4 available data set below.</p>
+<ul>
+<li>station.csv - Contains data that represents a station where users can pick up or return bikes.</li>
+<li>status.csv - Data about the number of bikes and docks available for a given station and minute.</li>
+<li>trips.csv - Data about individual bike trips.</li>
+<li>weather.csv - Data about the weather on a specific day for specific station id.</li>
+</ul>
+<h2 id="hypothesis-generation">Hypothesis Generation</h2>
+<p>What could effect the people to rent a bike?</p>
+<ul>
+<li>Number of bikes</li>
+<li>Condition of the bikes</li>
+<li>Availablity of the bike roads around the station</li>
+<li>Daily Trend: weekdays as compared to weekend or holiday</li>
+<li>Hourly trend: office timings. Early morning and late evening</li>
+<li>Rain: The demand of bikes will be lower on a rainy day as compared to a sunny day</li>
+<li>Temperature: I presume it may have positive correlation</li>
+<li>Pollution: government / company policies</li>
+<li>Traffic: Higher traffic may force people to use bike as compared to others</li>
+</ul>
+<h2 id="understanding-the-data-set-and-eda">Understanding the Data Set and EDA</h2>
+<p>I&rsquo;ve already performed EDA on the data sets, you can access it via this <a href="https://tanerceyhanli.github.io/Bike-Share-Demand-Prediction-in-San-Francisco">link</a>.</p>
+<h3 id="install-necessary-packages">Install Necessary Packages</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd
+<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">from</span> scipy.stats.stats <span style="color:#f92672">import</span> pearsonr  
+<span style="color:#f92672">from</span> pandas.tseries.holiday <span style="color:#f92672">import</span> USFederalHolidayCalendar
+<span style="color:#f92672">from</span> pandas.tseries.offsets <span style="color:#f92672">import</span> CustomBusinessDay
+<span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> train_test_split
+<span style="color:#f92672">import</span> math
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+<span style="color:#f92672">from</span> sklearn.feature_selection <span style="color:#f92672">import</span> SelectKBest
+<span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> Pipeline
+<span style="color:#f92672">from</span> sklearn.decomposition <span style="color:#f92672">import</span> PCA
+<span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> FeatureUnion
+<span style="color:#f92672">from</span> sklearn.ensemble <span style="color:#f92672">import</span> RandomForestRegressor, GradientBoostingRegressor, AdaBoostRegressor
+<span style="color:#f92672">from</span> sklearn.tree <span style="color:#f92672">import</span> DecisionTreeRegressor
+<span style="color:#f92672">from</span> sklearn.linear_model <span style="color:#f92672">import</span> LogisticRegression
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> cross_val_score
+<span style="color:#f92672">from</span> sklearn.model_selection <span style="color:#f92672">import</span> KFold
+<span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error, median_absolute_error
+<span style="color:#f92672">from</span> pandas.tseries.holiday <span style="color:#f92672">import</span> USFederalHolidayCalendar <span style="color:#66d9ef">as</span> calendar
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> LabelEncoder
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+</code></pre></div><h3 id="loading-data-sets">Loading Data Sets</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_trip <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;trip.csv&#34;</span>)
+df_station <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;station.csv&#34;</span>)
+df_weather <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>read_csv(<span style="color:#e6db74">&#34;weather.csv&#34;</span>)
+</code></pre></div><h3 id="station-data-set">Station Data Set</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_station
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>name</th>
+      <th>lat</th>
+      <th>long</th>
+      <th>dock_count</th>
+      <th>city</th>
+      <th>installation_date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>San Jose Diridon Caltrain Station</td>
+      <td>37.329732</td>
+      <td>-121.901782</td>
+      <td>27</td>
+      <td>San Jose</td>
+      <td>8/6/2013</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3</td>
+      <td>San Jose Civic Center</td>
+      <td>37.330698</td>
+      <td>-121.888979</td>
+      <td>15</td>
+      <td>San Jose</td>
+      <td>8/5/2013</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>Santa Clara at Almaden</td>
+      <td>37.333988</td>
+      <td>-121.894902</td>
+      <td>11</td>
+      <td>San Jose</td>
+      <td>8/6/2013</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5</td>
+      <td>Adobe on Almaden</td>
+      <td>37.331415</td>
+      <td>-121.893200</td>
+      <td>19</td>
+      <td>San Jose</td>
+      <td>8/5/2013</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>6</td>
+      <td>San Pedro Square</td>
+      <td>37.336721</td>
+      <td>-121.894074</td>
+      <td>15</td>
+      <td>San Jose</td>
+      <td>8/7/2013</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>77</td>
+      <td>Market at Sansome</td>
+      <td>37.789625</td>
+      <td>-122.400811</td>
+      <td>27</td>
+      <td>San Francisco</td>
+      <td>8/25/2013</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>80</td>
+      <td>Santa Clara County Civic Center</td>
+      <td>37.352601</td>
+      <td>-121.905733</td>
+      <td>15</td>
+      <td>San Jose</td>
+      <td>12/31/2013</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>82</td>
+      <td>Broadway St at Battery St</td>
+      <td>37.798541</td>
+      <td>-122.400862</td>
+      <td>15</td>
+      <td>San Francisco</td>
+      <td>1/22/2014</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>83</td>
+      <td>Mezes Park</td>
+      <td>37.491269</td>
+      <td>-122.236234</td>
+      <td>15</td>
+      <td>Redwood City</td>
+      <td>2/20/2014</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>84</td>
+      <td>Ryland Park</td>
+      <td>37.342725</td>
+      <td>-121.895617</td>
+      <td>15</td>
+      <td>San Jose</td>
+      <td>4/9/2014</td>
+    </tr>
+  </tbody>
+</table>
+<p>70 rows × 7 columns</p>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">len(df_station<span style="color:#f92672">.</span>id<span style="color:#f92672">.</span>unique())
+</code></pre></div><pre><code>70
+</code></pre>
+<h4 id="there-are-70-different-stations">There are 70 different stations.</h4>
+<h3 id="trip-data-set">Trip Data Set</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Have a look at first 5 instance</span>
+df_trip<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>duration</th>
+      <th>start_date</th>
+      <th>start_station_name</th>
+      <th>start_station_id</th>
+      <th>end_date</th>
+      <th>end_station_name</th>
+      <th>end_station_id</th>
+      <th>bike_id</th>
+      <th>subscription_type</th>
+      <th>zip_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4576</td>
+      <td>63</td>
+      <td>8/29/2013 14:13</td>
+      <td>South Van Ness at Market</td>
+      <td>66</td>
+      <td>8/29/2013 14:14</td>
+      <td>South Van Ness at Market</td>
+      <td>66</td>
+      <td>520</td>
+      <td>Subscriber</td>
+      <td>94127</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4607</td>
+      <td>70</td>
+      <td>8/29/2013 14:42</td>
+      <td>San Jose City Hall</td>
+      <td>10</td>
+      <td>8/29/2013 14:43</td>
+      <td>San Jose City Hall</td>
+      <td>10</td>
+      <td>661</td>
+      <td>Subscriber</td>
+      <td>95138</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4130</td>
+      <td>71</td>
+      <td>8/29/2013 10:16</td>
+      <td>Mountain View City Hall</td>
+      <td>27</td>
+      <td>8/29/2013 10:17</td>
+      <td>Mountain View City Hall</td>
+      <td>27</td>
+      <td>48</td>
+      <td>Subscriber</td>
+      <td>97214</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4251</td>
+      <td>77</td>
+      <td>8/29/2013 11:29</td>
+      <td>San Jose City Hall</td>
+      <td>10</td>
+      <td>8/29/2013 11:30</td>
+      <td>San Jose City Hall</td>
+      <td>10</td>
+      <td>26</td>
+      <td>Subscriber</td>
+      <td>95060</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4299</td>
+      <td>83</td>
+      <td>8/29/2013 12:02</td>
+      <td>South Van Ness at Market</td>
+      <td>66</td>
+      <td>8/29/2013 12:04</td>
+      <td>Market at 10th</td>
+      <td>67</td>
+      <td>319</td>
+      <td>Subscriber</td>
+      <td>94103</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Number of instance and variables</span>
+df_trip<span style="color:#f92672">.</span>shape
+</code></pre></div><pre><code>(669959, 11)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Checking for Missing Values</span>
+df_trip<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()
+</code></pre></div><pre><code>id                       0
+duration                 0
+start_date               0
+start_station_name       0
+start_station_id         0
+end_date                 0
+end_station_name         0
+end_station_id           0
+bike_id                  0
+subscription_type        0
+zip_code              6619
+dtype: int64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Check dtypes</span>
+df_trip<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 669959 entries, 0 to 669958
+Data columns (total 11 columns):
+ #   Column              Non-Null Count   Dtype 
+---  ------              --------------   ----- 
+ 0   id                  669959 non-null  int64 
+ 1   duration            669959 non-null  int64 
+ 2   start_date          669959 non-null  object
+ 3   start_station_name  669959 non-null  object
+ 4   start_station_id    669959 non-null  int64 
+ 5   end_date            669959 non-null  object
+ 6   end_station_name    669959 non-null  object
+ 7   end_station_id      669959 non-null  int64 
+ 8   bike_id             669959 non-null  int64 
+ 9   subscription_type   669959 non-null  object
+ 10  zip_code            663340 non-null  object
+dtypes: int64(5), object(6)
+memory usage: 56.2+ MB
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Create a new variable date from start_date</span>
+df_trip[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> df_trip<span style="color:#f92672">.</span>start_date
+df_trip<span style="color:#f92672">.</span>date <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_trip<span style="color:#f92672">.</span>start_date, format<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;%m/</span><span style="color:#e6db74">%d</span><span style="color:#e6db74">/%Y %H:%M&#39;</span>)
+df_trip[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_trip[<span style="color:#e6db74">&#39;date&#39;</span>])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Summary statistics</span>
+df_trip<span style="color:#f92672">.</span>describe()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>duration</th>
+      <th>start_station_id</th>
+      <th>end_station_id</th>
+      <th>bike_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>669959.000000</td>
+      <td>6.699590e+05</td>
+      <td>669959.000000</td>
+      <td>669959.000000</td>
+      <td>669959.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>460382.009899</td>
+      <td>1.107950e+03</td>
+      <td>57.851876</td>
+      <td>57.837438</td>
+      <td>427.587620</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>264584.458487</td>
+      <td>2.225544e+04</td>
+      <td>17.112474</td>
+      <td>17.200142</td>
+      <td>153.450988</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4069.000000</td>
+      <td>6.000000e+01</td>
+      <td>2.000000</td>
+      <td>2.000000</td>
+      <td>9.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>231082.500000</td>
+      <td>3.440000e+02</td>
+      <td>50.000000</td>
+      <td>50.000000</td>
+      <td>334.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>459274.000000</td>
+      <td>5.170000e+02</td>
+      <td>62.000000</td>
+      <td>62.000000</td>
+      <td>440.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>692601.000000</td>
+      <td>7.550000e+02</td>
+      <td>70.000000</td>
+      <td>70.000000</td>
+      <td>546.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>913460.000000</td>
+      <td>1.727040e+07</td>
+      <td>84.000000</td>
+      <td>84.000000</td>
+      <td>878.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<h3 id="weather">Weather</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_weather
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date</th>
+      <th>start_station_id</th>
+      <th>zip_code</th>
+      <th>mean_temperature_f</th>
+      <th>min_temperature_f</th>
+      <th>mean_humidity</th>
+      <th>max_humidity</th>
+      <th>mean_visibility_miles</th>
+      <th>min_visibility_miles</th>
+      <th>max_wind_Speed_mph</th>
+      <th>max_gust_speed_mph</th>
+      <th>precipitation_inches</th>
+      <th>events</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2013-08-29</td>
+      <td>27</td>
+      <td>94107</td>
+      <td>68.0</td>
+      <td>61.0</td>
+      <td>75.0</td>
+      <td>93.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2013-08-29</td>
+      <td>39</td>
+      <td>94107</td>
+      <td>68.0</td>
+      <td>61.0</td>
+      <td>75.0</td>
+      <td>93.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2013-08-29</td>
+      <td>41</td>
+      <td>94107</td>
+      <td>68.0</td>
+      <td>61.0</td>
+      <td>75.0</td>
+      <td>93.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2013-08-29</td>
+      <td>47</td>
+      <td>94107</td>
+      <td>68.0</td>
+      <td>61.0</td>
+      <td>75.0</td>
+      <td>93.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2013-08-29</td>
+      <td>48</td>
+      <td>94107</td>
+      <td>68.0</td>
+      <td>61.0</td>
+      <td>75.0</td>
+      <td>93.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>52038</th>
+      <td>2015-08-31</td>
+      <td>71</td>
+      <td>94109</td>
+      <td>70.8</td>
+      <td>60.2</td>
+      <td>63.8</td>
+      <td>82.2</td>
+      <td>11.4</td>
+      <td>9.8</td>
+      <td>19.0</td>
+      <td>22.5</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52039</th>
+      <td>2015-08-31</td>
+      <td>66</td>
+      <td>94103</td>
+      <td>70.8</td>
+      <td>60.2</td>
+      <td>63.8</td>
+      <td>82.2</td>
+      <td>11.4</td>
+      <td>9.8</td>
+      <td>19.0</td>
+      <td>22.5</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52040</th>
+      <td>2015-08-31</td>
+      <td>67</td>
+      <td>94103</td>
+      <td>70.8</td>
+      <td>60.2</td>
+      <td>63.8</td>
+      <td>82.2</td>
+      <td>11.4</td>
+      <td>9.8</td>
+      <td>19.0</td>
+      <td>22.5</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52041</th>
+      <td>2015-08-31</td>
+      <td>72</td>
+      <td>94103</td>
+      <td>70.8</td>
+      <td>60.2</td>
+      <td>63.8</td>
+      <td>82.2</td>
+      <td>11.4</td>
+      <td>9.8</td>
+      <td>19.0</td>
+      <td>22.5</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>52042</th>
+      <td>2015-08-31</td>
+      <td>25</td>
+      <td>95037</td>
+      <td>70.8</td>
+      <td>60.2</td>
+      <td>63.8</td>
+      <td>82.2</td>
+      <td>11.4</td>
+      <td>9.8</td>
+      <td>19.0</td>
+      <td>22.5</td>
+      <td>0.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>52043 rows × 13 columns</p>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_weather<span style="color:#f92672">.</span>events<span style="color:#f92672">.</span>unique()
+</code></pre></div><pre><code>array([nan, 'Fog', 'Rain', 'Fog-Rain', 'rain', 'Rain-Thunderstorm'],
+      dtype=object)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_weather<span style="color:#f92672">.</span>loc[df_weather<span style="color:#f92672">.</span>events <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;rain&#39;</span>, <span style="color:#e6db74">&#39;events&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Rain&#34;</span>
+df_weather<span style="color:#f92672">.</span>loc[df_weather<span style="color:#f92672">.</span>events<span style="color:#f92672">.</span>isnull(), <span style="color:#e6db74">&#39;events&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Normal&#34;</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_weather<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()
+</code></pre></div><pre><code>date                       0
+start_station_id           0
+zip_code                   0
+mean_temperature_f         0
+min_temperature_f          5
+mean_humidity              0
+max_humidity             105
+mean_visibility_miles      0
+min_visibility_miles      26
+max_wind_Speed_mph         0
+max_gust_speed_mph         2
+precipitation_inches     252
+events                     0
+dtype: int64
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Fill null cells with lambda</span>
+df_weather <span style="color:#f92672">=</span> df_weather<span style="color:#f92672">.</span>apply(<span style="color:#66d9ef">lambda</span> x:x<span style="color:#f92672">.</span>fillna(x<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>index[<span style="color:#ae81ff">0</span>]))
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df_weather<span style="color:#f92672">.</span>isnull()<span style="color:#f92672">.</span>sum()
+</code></pre></div><pre><code>date                     0
+start_station_id         0
+zip_code                 0
+mean_temperature_f       0
+min_temperature_f        0
+mean_humidity            0
+max_humidity             0
+mean_visibility_miles    0
+min_visibility_miles     0
+max_wind_Speed_mph       0
+max_gust_speed_mph       0
+precipitation_inches     0
+events                   0
+dtype: int64
+</code></pre>
+<h2 id="data-preparation">Data Preparation</h2>
+<ul>
+<li>Prepare data set for prediction based on df_trip dataframe</li>
+<li>Drop unnecessary variables</li>
+<li>Data set should countain date and total number of daily trips from each stations</li>
+<li>Day,Mount,Year,Weekday,Holiday,Season variables need to be added</li>
+<li>Station data should be merged</li>
+<li>Weather data should be merged</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Drop unnecessary variables</span>
+df<span style="color:#f92672">=</span> df_trip<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;id&#39;</span>,<span style="color:#e6db74">&#39;duration&#39;</span>,<span style="color:#e6db74">&#39;start_date&#39;</span>,<span style="color:#e6db74">&#39;start_station_name&#39;</span>,<span style="color:#e6db74">&#39;end_date&#39;</span>, <span style="color:#e6db74">&#39;end_station_name&#39;</span>,<span style="color:#e6db74">&#39;end_station_id&#39;</span>,<span style="color:#e6db74">&#39;bike_id&#39;</span>,<span style="color:#e6db74">&#39;subscription_type&#39;</span>, <span style="color:#e6db74">&#39;zip_code&#39;</span>], <span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Number of trips variable</span>
+df[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>date<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>date
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>value_counts()<span style="color:#f92672">.</span>to_frame(<span style="color:#e6db74">&#39;no_of_trips&#39;</span>)<span style="color:#f92672">.</span>reset_index()
+
+<span style="color:#75715e">#Sort by date</span>
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>sort_values(by<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;date&#39;</span>])
+df<span style="color:#f92672">.</span>reset_index(drop<span style="color:#f92672">=</span>True, inplace<span style="color:#f92672">=</span>True)
+
+df<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_station_id</th>
+      <th>date</th>
+      <th>no_of_trips</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>2013-08-29</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
+      <td>2013-08-29</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>2013-08-29</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>49</td>
+      <td>2013-08-29</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55</td>
+      <td>2013-08-29</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># We will make daily predictions, hours is not important</span>
+df[<span style="color:#e6db74">&#39;year&#39;</span>] <span style="color:#f92672">=</span> df_trip[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>year
+df[<span style="color:#e6db74">&#39;month&#39;</span>] <span style="color:#f92672">=</span> df_trip[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>month
+df[<span style="color:#e6db74">&#39;day&#39;</span>] <span style="color:#f92672">=</span> df_trip[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>day
+
+<span style="color:#75715e"># Variables added</span>
+df<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 43270 entries, 0 to 43269
+Data columns (total 6 columns):
+ #   Column            Non-Null Count  Dtype 
+---  ------            --------------  ----- 
+ 0   start_station_id  43270 non-null  int64 
+ 1   date              43270 non-null  object
+ 2   no_of_trips       43270 non-null  int64 
+ 3   year              43270 non-null  int64 
+ 4   month             43270 non-null  int64 
+ 5   day               43270 non-null  int64 
+dtypes: int64(5), object(1)
+memory usage: 2.0+ MB
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Day name of the week</span>
+df[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;date&#39;</span>])
+df[<span style="color:#e6db74">&#39;day_name&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>day_name()
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Weekend</span>
+df[<span style="color:#e6db74">&#39;weekend&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;weekend&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>dayofweek <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>
+df[<span style="color:#e6db74">&#39;weekend&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;weekend&#39;</span>]<span style="color:#f92672">.</span>astype(object)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Season variable</span>
+df[<span style="color:#e6db74">&#39;season&#39;</span>] <span style="color:#f92672">=</span> (df[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>month<span style="color:#f92672">%</span><span style="color:#ae81ff">12</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">3</span>)<span style="color:#f92672">//</span><span style="color:#ae81ff">3</span>
+
+seasons <span style="color:#f92672">=</span> {
+             <span style="color:#ae81ff">1</span>: <span style="color:#e6db74">&#39;Winter&#39;</span>,
+             <span style="color:#ae81ff">2</span>: <span style="color:#e6db74">&#39;Spring&#39;</span>,
+             <span style="color:#ae81ff">3</span>: <span style="color:#e6db74">&#39;Summer&#39;</span>,
+             <span style="color:#ae81ff">4</span>: <span style="color:#e6db74">&#39;Autumn&#39;</span>
+}
+
+df[<span style="color:#e6db74">&#39;season&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;season&#39;</span>]<span style="color:#f92672">.</span>map(seasons)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Find holidays</span>
+cal <span style="color:#f92672">=</span> calendar()
+dr <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>date_range(start<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2013-07-01&#39;</span>, end<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2016-07-31&#39;</span>)
+holidays <span style="color:#f92672">=</span> cal<span style="color:#f92672">.</span>holidays(start<span style="color:#f92672">=</span>dr<span style="color:#f92672">.</span>min(), end<span style="color:#f92672">=</span>dr<span style="color:#f92672">.</span>max())
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Holiday variable</span>
+df[<span style="color:#e6db74">&#39;holiday&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;date&#39;</span>]<span style="color:#f92672">.</span>dt<span style="color:#f92672">.</span>date<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;datetime64&#39;</span>)<span style="color:#f92672">.</span>isin(holidays)
+df[<span style="color:#e6db74">&#39;holiday&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;holiday&#39;</span>]<span style="color:#f92672">.</span>astype(object)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># allign dtypes before merge</span>
+df[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;date&#39;</span>])
+df_station[<span style="color:#e6db74">&#39;installation_date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_station[<span style="color:#e6db74">&#39;installation_date&#39;</span>])
+df_weather[<span style="color:#e6db74">&#39;date&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df_weather[<span style="color:#e6db74">&#39;date&#39;</span>])
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#merge trips and station data</span>
+no_of_docks <span style="color:#f92672">=</span> []
+<span style="color:#66d9ef">for</span> day <span style="color:#f92672">in</span> df<span style="color:#f92672">.</span>date:
+    no_of_docks<span style="color:#f92672">.</span>append(sum(df_station[df_station<span style="color:#f92672">.</span>installation_date <span style="color:#f92672">&lt;=</span> day]<span style="color:#f92672">.</span>dock_count))
+    
+df[<span style="color:#e6db74">&#39;no_of_docks&#39;</span>] <span style="color:#f92672">=</span> no_of_docks
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#merge trips and weather data</span>
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>merge(df, df_weather, on<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#39;start_station_id&#39;</span>,<span style="color:#e6db74">&#39;date&#39;</span>], how<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;left&#39;</span>)
+
+df<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_station_id</th>
+      <th>date</th>
+      <th>no_of_trips</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>day_name</th>
+      <th>weekend</th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>...</th>
+      <th>mean_temperature_f</th>
+      <th>min_temperature_f</th>
+      <th>mean_humidity</th>
+      <th>max_humidity</th>
+      <th>mean_visibility_miles</th>
+      <th>min_visibility_miles</th>
+      <th>max_wind_Speed_mph</th>
+      <th>max_gust_speed_mph</th>
+      <th>precipitation_inches</th>
+      <th>events</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>2013-08-29</td>
+      <td>5</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>71.0</td>
+      <td>62.0</td>
+      <td>79.0</td>
+      <td>94.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>14.0</td>
+      <td>17.0</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
+      <td>2013-08-29</td>
+      <td>4</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>70.4</td>
+      <td>62.8</td>
+      <td>73.2</td>
+      <td>88.8</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>17.8</td>
+      <td>21.6</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>2013-08-29</td>
+      <td>1</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>70.4</td>
+      <td>62.8</td>
+      <td>73.2</td>
+      <td>88.8</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>17.8</td>
+      <td>21.6</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>49</td>
+      <td>2013-08-29</td>
+      <td>18</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>70.4</td>
+      <td>62.8</td>
+      <td>73.2</td>
+      <td>88.8</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>17.8</td>
+      <td>21.6</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55</td>
+      <td>2013-08-29</td>
+      <td>6</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>70.4</td>
+      <td>62.8</td>
+      <td>73.2</td>
+      <td>88.8</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>17.8</td>
+      <td>21.6</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 43270 entries, 0 to 43269
+Data columns (total 22 columns):
+ #   Column                 Non-Null Count  Dtype         
+---  ------                 --------------  -----         
+ 0   start_station_id       43270 non-null  int64         
+ 1   date                   43270 non-null  datetime64[ns]
+ 2   no_of_trips            43270 non-null  int64         
+ 3   year                   43270 non-null  int64         
+ 4   month                  43270 non-null  int64         
+ 5   day                    43270 non-null  int64         
+ 6   day_name               43270 non-null  object        
+ 7   weekend                43270 non-null  object        
+ 8   season                 43270 non-null  object        
+ 9   holiday                43270 non-null  object        
+ 10  no_of_docks            43270 non-null  int64         
+ 11  zip_code               43270 non-null  int64         
+ 12  mean_temperature_f     43270 non-null  float64       
+ 13  min_temperature_f      43270 non-null  float64       
+ 14  mean_humidity          43270 non-null  float64       
+ 15  max_humidity           43270 non-null  float64       
+ 16  mean_visibility_miles  43270 non-null  float64       
+ 17  min_visibility_miles   43270 non-null  float64       
+ 18  max_wind_Speed_mph     43270 non-null  float64       
+ 19  max_gust_speed_mph     43270 non-null  float64       
+ 20  precipitation_inches   43270 non-null  float64       
+ 21  events                 43270 non-null  object        
+dtypes: datetime64[ns](1), float64(9), int64(7), object(5)
+memory usage: 7.6+ MB
+</code></pre>
+<h2 id="feature-engineering">Feature Engineering</h2>
+<h3 id="standard-scaler-for-continous-variables">Standard Scaler for continous variables</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">scaler <span style="color:#f92672">=</span> StandardScaler()
+df[[<span style="color:#e6db74">&#39;no_of_docks&#39;</span>,<span style="color:#e6db74">&#39;mean_temperature_f&#39;</span>, <span style="color:#e6db74">&#39;min_temperature_f&#39;</span>, <span style="color:#e6db74">&#39;mean_humidity&#39;</span>, <span style="color:#e6db74">&#39;max_humidity&#39;</span>,<span style="color:#e6db74">&#39;mean_visibility_miles&#39;</span>, <span style="color:#e6db74">&#39;min_visibility_miles&#39;</span>, <span style="color:#e6db74">&#39;max_wind_Speed_mph&#39;</span>, <span style="color:#e6db74">&#39;max_gust_speed_mph&#39;</span>,<span style="color:#e6db74">&#39;max_gust_speed_mph&#39;</span>]]<span style="color:#f92672">=</span>scaler<span style="color:#f92672">.</span>fit_transform(df[[<span style="color:#e6db74">&#39;no_of_docks&#39;</span>,<span style="color:#e6db74">&#39;mean_temperature_f&#39;</span>, <span style="color:#e6db74">&#39;min_temperature_f&#39;</span>, <span style="color:#e6db74">&#39;mean_humidity&#39;</span>, <span style="color:#e6db74">&#39;max_humidity&#39;</span>,<span style="color:#e6db74">&#39;mean_visibility_miles&#39;</span>, <span style="color:#e6db74">&#39;min_visibility_miles&#39;</span>, <span style="color:#e6db74">&#39;max_wind_Speed_mph&#39;</span>, <span style="color:#e6db74">&#39;max_gust_speed_mph&#39;</span>,<span style="color:#e6db74">&#39;max_gust_speed_mph&#39;</span>]]<span style="color:#f92672">.</span>to_numpy())
+df
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_station_id</th>
+      <th>date</th>
+      <th>no_of_trips</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>day_name</th>
+      <th>weekend</th>
+      <th>season</th>
+      <th>holiday</th>
+      <th>...</th>
+      <th>mean_temperature_f</th>
+      <th>min_temperature_f</th>
+      <th>mean_humidity</th>
+      <th>max_humidity</th>
+      <th>mean_visibility_miles</th>
+      <th>min_visibility_miles</th>
+      <th>max_wind_Speed_mph</th>
+      <th>max_gust_speed_mph</th>
+      <th>precipitation_inches</th>
+      <th>events</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>2013-08-29</td>
+      <td>5</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.431242</td>
+      <td>1.424143</td>
+      <td>1.100845</td>
+      <td>1.025795</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>-0.568521</td>
+      <td>-0.581315</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
+      <td>2013-08-29</td>
+      <td>4</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>0.393064</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>0.117123</td>
+      <td>0.001171</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>2013-08-29</td>
+      <td>1</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>0.393064</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>0.117123</td>
+      <td>0.001171</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>49</td>
+      <td>2013-08-29</td>
+      <td>18</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>0.393064</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>0.117123</td>
+      <td>0.001171</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55</td>
+      <td>2013-08-29</td>
+      <td>6</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>Thursday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>0.393064</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>0.117123</td>
+      <td>0.001171</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>43265</th>
+      <td>9</td>
+      <td>2015-08-31</td>
+      <td>2</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>17</td>
+      <td>Monday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.401712</td>
+      <td>1.164050</td>
+      <td>-0.361670</td>
+      <td>-0.410016</td>
+      <td>1.472286</td>
+      <td>0.619260</td>
+      <td>0.333642</td>
+      <td>0.115136</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>43266</th>
+      <td>7</td>
+      <td>2015-08-31</td>
+      <td>2</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>17</td>
+      <td>Monday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.401712</td>
+      <td>1.164050</td>
+      <td>-0.361670</td>
+      <td>-0.410016</td>
+      <td>1.472286</td>
+      <td>0.619260</td>
+      <td>0.333642</td>
+      <td>0.115136</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>43267</th>
+      <td>22</td>
+      <td>2015-08-31</td>
+      <td>5</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>17</td>
+      <td>Monday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.431242</td>
+      <td>1.424143</td>
+      <td>-0.053772</td>
+      <td>-1.042746</td>
+      <td>0.214677</td>
+      <td>0.695694</td>
+      <td>0.153210</td>
+      <td>-0.201433</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>43268</th>
+      <td>77</td>
+      <td>2015-08-31</td>
+      <td>49</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>17</td>
+      <td>Monday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.135943</td>
+      <td>1.135151</td>
+      <td>-0.053772</td>
+      <td>-0.190994</td>
+      <td>0.214677</td>
+      <td>0.313523</td>
+      <td>0.153210</td>
+      <td>-0.074805</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+    <tr>
+      <th>43269</th>
+      <td>42</td>
+      <td>2015-08-31</td>
+      <td>30</td>
+      <td>2013</td>
+      <td>10</td>
+      <td>17</td>
+      <td>Monday</td>
+      <td>False</td>
+      <td>Summer</td>
+      <td>False</td>
+      <td>...</td>
+      <td>1.401712</td>
+      <td>1.164050</td>
+      <td>-0.361670</td>
+      <td>-0.410016</td>
+      <td>1.472286</td>
+      <td>0.619260</td>
+      <td>0.333642</td>
+      <td>0.115136</td>
+      <td>0.0</td>
+      <td>Normal</td>
+    </tr>
+  </tbody>
+</table>
+<p>43270 rows × 22 columns</p>
+</div>
+<h3 id="one-hot-encoding-for-categorical-variables">One hot encoding for categorical variables</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#75715e"># Making dummy variables for categorical data with more inputs.  </span>
+data_dummy <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>get_dummies(df[[<span style="color:#e6db74">&#39;day_name&#39;</span>,<span style="color:#e6db74">&#39;weekend&#39;</span>,<span style="color:#e6db74">&#39;season&#39;</span>, <span style="color:#e6db74">&#39;holiday&#39;</span>, <span style="color:#e6db74">&#39;events&#39;</span>]])
+
+<span style="color:#75715e"># Output the first five rows.</span>
+data_dummy<span style="color:#f92672">.</span>head()
+
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day_name_Friday</th>
+      <th>day_name_Monday</th>
+      <th>day_name_Saturday</th>
+      <th>day_name_Sunday</th>
+      <th>day_name_Thursday</th>
+      <th>day_name_Tuesday</th>
+      <th>day_name_Wednesday</th>
+      <th>weekend_False</th>
+      <th>weekend_True</th>
+      <th>season_Autumn</th>
+      <th>season_Spring</th>
+      <th>season_Summer</th>
+      <th>season_Winter</th>
+      <th>holiday_False</th>
+      <th>holiday_True</th>
+      <th>events_Fog</th>
+      <th>events_Fog-Rain</th>
+      <th>events_Normal</th>
+      <th>events_Rain</th>
+      <th>events_Rain-Thunderstorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Merging (concatenate) original data frame with &#39;dummy&#39; dataframe.</span>
+df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>concat([df,data_dummy], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Dropping attributes for which we made dummy variables and zip_code</span>
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;day_name&#39;</span>,<span style="color:#e6db74">&#39;weekend&#39;</span>,<span style="color:#e6db74">&#39;season&#39;</span>, <span style="color:#e6db74">&#39;holiday&#39;</span>, <span style="color:#e6db74">&#39;events&#39;</span>,<span style="color:#e6db74">&#39;zip_code&#39;</span>], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+df<span style="color:#f92672">.</span>head()
+</code></pre></div><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+<pre><code>.dataframe tbody tr th {
+    vertical-align: top;
+}
+
+.dataframe thead th {
+    text-align: right;
+}
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_station_id</th>
+      <th>date</th>
+      <th>no_of_trips</th>
+      <th>year</th>
+      <th>month</th>
+      <th>day</th>
+      <th>no_of_docks</th>
+      <th>mean_temperature_f</th>
+      <th>min_temperature_f</th>
+      <th>mean_humidity</th>
+      <th>...</th>
+      <th>season_Spring</th>
+      <th>season_Summer</th>
+      <th>season_Winter</th>
+      <th>holiday_False</th>
+      <th>holiday_True</th>
+      <th>events_Fog</th>
+      <th>events_Fog-Rain</th>
+      <th>events_Normal</th>
+      <th>events_Rain</th>
+      <th>events_Rain-Thunderstorm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>22</td>
+      <td>2013-08-29</td>
+      <td>5</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>-2.172486</td>
+      <td>1.431242</td>
+      <td>1.424143</td>
+      <td>1.100845</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>13</td>
+      <td>2013-08-29</td>
+      <td>4</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>-2.172486</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>30</td>
+      <td>2013-08-29</td>
+      <td>1</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>-2.172486</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>49</td>
+      <td>2013-08-29</td>
+      <td>18</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>-2.172486</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55</td>
+      <td>2013-08-29</td>
+      <td>6</td>
+      <td>2013</td>
+      <td>8</td>
+      <td>29</td>
+      <td>-2.172486</td>
+      <td>1.342652</td>
+      <td>1.539740</td>
+      <td>0.542780</td>
+      <td>...</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 36 columns</p>
+</div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df<span style="color:#f92672">.</span>info()
+</code></pre></div><pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+Int64Index: 43270 entries, 0 to 43269
+Data columns (total 36 columns):
+ #   Column                    Non-Null Count  Dtype         
+---  ------                    --------------  -----         
+ 0   start_station_id          43270 non-null  int64         
+ 1   date                      43270 non-null  datetime64[ns]
+ 2   no_of_trips               43270 non-null  int64         
+ 3   year                      43270 non-null  int64         
+ 4   month                     43270 non-null  int64         
+ 5   day                       43270 non-null  int64         
+ 6   no_of_docks               43270 non-null  float64       
+ 7   mean_temperature_f        43270 non-null  float64       
+ 8   min_temperature_f         43270 non-null  float64       
+ 9   mean_humidity             43270 non-null  float64       
+ 10  max_humidity              43270 non-null  float64       
+ 11  mean_visibility_miles     43270 non-null  float64       
+ 12  min_visibility_miles      43270 non-null  float64       
+ 13  max_wind_Speed_mph        43270 non-null  float64       
+ 14  max_gust_speed_mph        43270 non-null  float64       
+ 15  precipitation_inches      43270 non-null  float64       
+ 16  day_name_Friday           43270 non-null  uint8         
+ 17  day_name_Monday           43270 non-null  uint8         
+ 18  day_name_Saturday         43270 non-null  uint8         
+ 19  day_name_Sunday           43270 non-null  uint8         
+ 20  day_name_Thursday         43270 non-null  uint8         
+ 21  day_name_Tuesday          43270 non-null  uint8         
+ 22  day_name_Wednesday        43270 non-null  uint8         
+ 23  weekend_False             43270 non-null  uint8         
+ 24  weekend_True              43270 non-null  uint8         
+ 25  season_Autumn             43270 non-null  uint8         
+ 26  season_Spring             43270 non-null  uint8         
+ 27  season_Summer             43270 non-null  uint8         
+ 28  season_Winter             43270 non-null  uint8         
+ 29  holiday_False             43270 non-null  uint8         
+ 30  holiday_True              43270 non-null  uint8         
+ 31  events_Fog                43270 non-null  uint8         
+ 32  events_Fog-Rain           43270 non-null  uint8         
+ 33  events_Normal             43270 non-null  uint8         
+ 34  events_Rain               43270 non-null  uint8         
+ 35  events_Rain-Thunderstorm  43270 non-null  uint8         
+dtypes: datetime64[ns](1), float64(10), int64(5), uint8(20)
+memory usage: 6.4 MB
+</code></pre>
+<h2 id="model-building">Model Building</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">labels <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>no_of_trips
+train <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>drop([<span style="color:#e6db74">&#39;no_of_trips&#39;</span>, <span style="color:#e6db74">&#39;date&#39;</span>], <span style="color:#ae81ff">1</span>)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">X_train, X_test, y_train, y_test <span style="color:#f92672">=</span> train_test_split(train, labels, test_size<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>, random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+</code></pre></div><h4 id="random-forest-regressor">Random Forest Regressor</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rfr <span style="color:#f92672">=</span> RandomForestRegressor(n_estimators <span style="color:#f92672">=</span> <span style="color:#ae81ff">55</span>,
+                            min_samples_leaf <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>,
+                            random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+rfr <span style="color:#f92672">=</span> rfr<span style="color:#f92672">.</span>fit(X_train, y_train)
+</code></pre></div><h4 id="ada-boost-regressor">Ada Boost Regressor</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">abr <span style="color:#f92672">=</span> AdaBoostRegressor(n_estimators <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>,
+                        learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>,
+                        loss <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;linear&#39;</span>,
+                        random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+</code></pre></div><h4 id="gradientboostingregressor">GradientBoostingRegressor</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gbr <span style="color:#f92672">=</span> GradientBoostingRegressor(learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.12</span>,
+                                n_estimators <span style="color:#f92672">=</span> <span style="color:#ae81ff">55</span>,
+                                max_depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>,
+                                min_samples_leaf <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>,
+                                random_state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+</code></pre></div><h3 id="scoring-the-models">Scoring the Models</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">scoring <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;r2&#39;</span>,<span style="color:#e6db74">&#39;neg_mean_squared_error&#39;</span>,<span style="color:#e6db74">&#39;neg_mean_absolute_error&#39;</span>]
+models <span style="color:#f92672">=</span> [rfr,abr,gbr]
+
+<span style="color:#66d9ef">for</span> model <span style="color:#f92672">in</span> models:
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> scoring:
+        scores <span style="color:#f92672">=</span> cross_val_score( model, X_train, y_train, cv<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, scoring <span style="color:#f92672">=</span> i)
+    <span style="color:#75715e">#    print(scores)</span>
+        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;r2&#39;</span>:
+            <span style="color:#66d9ef">print</span>(model, i, <span style="color:#e6db74">&#39;: &#39;</span>, scores<span style="color:#f92672">.</span>mean())
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;neg_mean_squared_error&#39;</span>:    
+            x <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">*</span>scores<span style="color:#f92672">.</span>mean()
+            y <span style="color:#f92672">=</span> math<span style="color:#f92672">.</span>sqrt(x) 
+            <span style="color:#66d9ef">print</span>(model, <span style="color:#e6db74">&#39;RMSE: &#39;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%0.2f</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> y)
+        <span style="color:#66d9ef">elif</span> i <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;neg_mean_absolute_error&#39;</span>:
+            x <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">*</span>scores<span style="color:#f92672">.</span>mean()
+            <span style="color:#66d9ef">print</span>(model,i, <span style="color:#e6db74">&#34;: </span><span style="color:#e6db74">%0.2f</span><span style="color:#e6db74"> (+/- </span><span style="color:#e6db74">%0.2f</span><span style="color:#e6db74">)&#34;</span> <span style="color:#f92672">%</span> (x, scores<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> <span style="color:#ae81ff">2</span>))   
+</code></pre></div><pre><code>RandomForestRegressor(min_samples_leaf=3, n_estimators=55, random_state=2) r2 :  0.9059889252171234
+RandomForestRegressor(min_samples_leaf=3, n_estimators=55, random_state=2) RMSE:  5.43
+RandomForestRegressor(min_samples_leaf=3, n_estimators=55, random_state=2) neg_mean_absolute_error : 3.39 (+/- 0.11)
+AdaBoostRegressor(learning_rate=0.1, n_estimators=100, random_state=2) r2 :  0.6193340252543343
+AdaBoostRegressor(learning_rate=0.1, n_estimators=100, random_state=2) RMSE:  10.93
+AdaBoostRegressor(learning_rate=0.1, n_estimators=100, random_state=2) neg_mean_absolute_error : 7.74 (+/- 0.23)
+GradientBoostingRegressor(learning_rate=0.12, max_depth=5, n_estimators=55,
+                          random_state=2) r2 :  0.8729724087591497
+GradientBoostingRegressor(learning_rate=0.12, max_depth=5, n_estimators=55,
+                          random_state=2) RMSE:  6.32
+GradientBoostingRegressor(learning_rate=0.12, max_depth=5, n_estimators=55,
+                          random_state=2) neg_mean_absolute_error : 4.12 (+/- 0.08)
+</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Fit and predict with the best model</span>
+rfr <span style="color:#f92672">=</span> rfr<span style="color:#f92672">.</span>fit(X_train, y_train)
+rfr_preds <span style="color:#f92672">=</span> rfr<span style="color:#f92672">.</span>predict(X_test)
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Visualize</span>
+y_test<span style="color:#f92672">.</span>reset_index(drop <span style="color:#f92672">=</span> True, inplace <span style="color:#f92672">=</span> True)
+fs <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">50</span>,<span style="color:#ae81ff">20</span>))
+plt<span style="color:#f92672">.</span>plot(rfr_preds)
+plt<span style="color:#f92672">.</span>plot(y_test)
+plt<span style="color:#f92672">.</span>legend([<span style="color:#e6db74">&#39;Prediction&#39;</span>, <span style="color:#e6db74">&#39;Acutal&#39;</span>])
+plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#34;Number of Trips&#34;</span>, fontsize <span style="color:#f92672">=</span> fs)
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#34;Predicted Date&#34;</span>, fontsize <span style="color:#f92672">=</span> fs)
+plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Predicted Values vs Actual Values&#34;</span>, fontsize <span style="color:#f92672">=</span> fs)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="output_60_0.png" alt="png"></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e">#Features by importance</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">plot_importances</span>(model, model_name):
+    importances <span style="color:#f92672">=</span> model<span style="color:#f92672">.</span>feature_importances_
+    std <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>std([model<span style="color:#f92672">.</span>feature_importances_ <span style="color:#66d9ef">for</span> feature <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>estimators_],
+                 axis<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+    indices <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argsort(importances)[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]    
+
+    <span style="color:#75715e"># Plot the feature importances of the forest</span>
+    plt<span style="color:#f92672">.</span>figure(figsize <span style="color:#f92672">=</span> (<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">5</span>))
+    plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Feature importances of &#34;</span> <span style="color:#f92672">+</span> model_name)
+    plt<span style="color:#f92672">.</span>bar(range(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]), importances[indices], color<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;r&#34;</span>, align<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;center&#34;</span>)
+    plt<span style="color:#f92672">.</span>xticks(range(X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]), indices)
+    plt<span style="color:#f92672">.</span>xlim([<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, X_train<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]])
+    plt<span style="color:#f92672">.</span>show()
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;Feature ranking:&#34;</span>)
+
+i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> feature <span style="color:#f92672">in</span> X_train:
+    <span style="color:#66d9ef">print</span> (i, feature)
+    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    
+plot_importances(rfr, <span style="color:#e6db74">&#34;RandomForestRegressor&#34;</span>)
+</code></pre></div><pre><code>Feature ranking:
+0 start_station_id
+1 year
+2 month
+3 day
+4 no_of_docks
+5 mean_temperature_f
+6 min_temperature_f
+7 mean_humidity
+8 max_humidity
+9 mean_visibility_miles
+10 min_visibility_miles
+11 max_wind_Speed_mph
+12 max_gust_speed_mph
+13 precipitation_inches
+14 day_name_Friday
+15 day_name_Monday
+16 day_name_Saturday
+17 day_name_Sunday
+18 day_name_Thursday
+19 day_name_Tuesday
+20 day_name_Wednesday
+21 weekend_False
+22 weekend_True
+23 season_Autumn
+24 season_Spring
+25 season_Summer
+26 season_Winter
+27 holiday_False
+28 holiday_True
+29 events_Fog
+30 events_Fog-Rain
+31 events_Normal
+32 events_Rain
+33 events_Rain-Thunderstorm
+</code></pre>
+<p><img src="output_61_1.png" alt="png"></p>
+<h4 id="question-can-you-predict-the-demand-for-bikes-in-a-given-station-day-in-advance">Question: Can you predict the demand for bikes in a given station day in advance?</h4>
+<p>If yes, what arethe main factors contributing to the predictions? Would this model be actionable to
+business? The model should be basic, the only requirement is that it should be
+interpretable.</p>
+<h4 id="answer-yes">Answer: Yes</h4>
+<p>Station, weekday/weekend info, number of docks, mean_temperature, day.
+If this model is improved, it can be actionable to business.
+Bike and docks number can be increased for the station which the prediction model interprets the demand will be higher.
+Or, for the stations with low number predicted demand may be considered to close down.</p>
+<h4 id="question-what-are-3-additional-pieces-of-information-you-would-recommend-to-add-to-these-datasets-to-gain-more-insight-into-the-business-and-usage-of-this-product">Question: What are 3 additional pieces of information you would recommend to add to these datasets to gain more insight into the business and usage of this product?</h4>
+<h4 id="answer">Answer:</h4>
+<ul>
+<li>Condition of the bikes</li>
+<li>Population in the region of the station</li>
+<li>Traffic data</li>
+<li>Availablity of the bike roads in the region of the station</li>
+<li>Polution</li>
+<li>Average bike prices in the region</li>
+</ul>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/tanerceyhanli/tanerceyhanli.github.io/edit/master/content/posts%5cBike%20Share%20Demand%20Prediction%20in%20San%20Francisco%5cindex.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        <div class="col-md-12 next-article">
+          <a href="/posts/insights-to-crimes-in-czechia-by-using-tableau/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Insights to Crimes in Czechia by using Tableau</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+          <div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function () {
+    
+    
+    if (window.location.hostname == "localhost") return;
+
+    var dsq = document.createElement("script");
+    dsq.type = "text/javascript";
+    dsq.async = true;
+    var disqus_shortname = "does-not-exist";
+    dsq.src = "//" + disqus_shortname + ".disqus.com/embed.js";
+    (
+      document.getElementsByTagName("head")[0] ||
+      document.getElementsByTagName("body")[0]
+    ).appendChild(dsq);
+  })();
+</script>
+<noscript
+  >Please enable JavaScript to view the
+  <a href="https://disqus.com/?ref_noscript"
+    >comments powered by Disqus.</a
+  ></noscript
+>
+<a href="https://disqus.com/" class="dsq-brlink"
+  >comments powered by <span class="logo-disqus">Disqus</span></a
+>
+
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#achievements">Certificates</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>tanerceyhanli@gmail..com</span></li>
+          
+          <li><span>Phone: </span> <span>&#43;420 777655815</span></li>
+          
+        </ul>
+      </div>
+      
+      
+  </div>
+</footer>
+
+    <script src="/assets/js/jquery-3.4.1.min.js"></script>
+<script src="/assets/js/popper.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+
+<script src="/assets/js/navbar.js"></script>
+<script src="/assets/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/assets/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

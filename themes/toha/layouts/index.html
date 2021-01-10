@@ -29,6 +29,7 @@
     {{ end }}
   </head>
   <body data-spy="scroll" data-target="#top-navbar" data-offset="100">
+  <div id=particles-js></div>
 
     <!--- NAVBAR ------------------------->
     {{- partial "navigators/navbar.html" . -}}
@@ -73,6 +74,9 @@
     <script src="{{ "/assets/js/itype.min.js" | relURL }}"></script>
     <script src="{{ "/assets/js/github-button.js" | relURL }}"></script>
     <script src="{{ "/assets/js/home.js" | relURL }}"></script>
+	<script src="{{ "/assets/js/particles.min.js" | relURL }}"></script>
+	<script src="{{ "/assets/js/script.min.js" | relURL }}"></script>
+	<script src="{{ "/assets/js/stats.min.js" | relURL }}"></script>
     <script src="{{ "/assets/js/jquery.filterizr.min.js" | relURL }}"></script>
   </body>
 </html>
