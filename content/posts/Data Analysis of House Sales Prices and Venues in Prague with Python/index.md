@@ -38,7 +38,7 @@ Let's visualize the population of Prague, with the help of choropleth library.
 There are more people living in Praha 4 and 10 than other municipal regions.
 
 #### House Sale Prices
-Sreality.com is the most used website for advertisement of houses in Czech Republic. I scraped all available house advertisements in the website for Prague and refined the data. In the data frame below, there are 4390 advertising with its features.
+Sreality.cz is one of the most used websites for advertisement of houses in Czech Republic. I scraped all available house advertisements in the website for Prague and refined the data. In the data frame below, there are 4390 advertising with its features.
 <br/><br/>
 {{< img src="3g.png">}}
 <br/><br/>
