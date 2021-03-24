@@ -14,7 +14,7 @@
   background-attachment: fixed;
   background-position: center;
   transform: scale(1.1);
-  filter: blur(0px);
+  filter: blur(2px);
   background-size: cover;
 }
 
