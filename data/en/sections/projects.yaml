@@ -27,6 +27,13 @@ projects:
   url: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
   summary:
   tags: ["python"]
+  
+- name: Automobile Price Prediction In Czech Market
+  logo: /images/sections/projects/python.png
+  timeline: "Apr 2021"
+  url: https://github.com/tanerceyhanli/Automobile_Price_Prediction_In_Czech_Market
+  summary:
+  tags: ["python","viz"]
 
 - name: AB Testing Case For an E-commerce Website with Python
   logo: /images/sections/projects/python.png
