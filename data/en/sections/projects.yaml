@@ -21,12 +21,12 @@ buttons:
 
 # your projects
 projects:
-- name: Data Analysis of House Sales Prices and Venues in Prague with Python
+- name: My Power BI Portfolio
   logo: /images/sections/projects/python.png
-  timeline: "Nov 2020"
-  url: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
+  timeline: "May 2021"
+  url: https://app.powerbi.com/view?r=eyJrIjoiOWMwNTE5ZDYtZWIwNy00MzYxLTliYTQtODNkZDFlYjYwMTY2IiwidCI6ImYyZGE5Mzk4LWIxOWYtNDJjYy04YzFlLTA2N2Q0NTgwZjMxMiIsImMiOjl9&pageName=ReportSection
   summary:
-  tags: ["python"]
+  tags: ["viz"]
   
 - name: Automobile Price Prediction In Czech Market
   logo: /images/sections/projects/python.png
@@ -39,6 +39,13 @@ projects:
   logo: /images/sections/projects/python.png
   timeline: "Feb 2021"
   url: https://github.com/tanerceyhanli/AB-Testing-Case-For-an-E-commerce-Website
+  summary:
+  tags: ["python"]
+  
+- name: Data Analysis of House Sales Prices and Venues in Prague with Python
+  logo: /images/sections/projects/python.png
+  timeline: "Nov 2020"
+  url: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
   summary:
   tags: ["python"]
 
