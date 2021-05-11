@@ -19,15 +19,8 @@ buttons:
 - name: Data Visualizaton
   filter: "viz"
 
-# your projects
+# your projects  
 projects:
-- name: My Power BI Portfolio
-  logo: /images/sections/projects/python.png
-  timeline: "May 2021"
-  url: https://app.powerbi.com/view?r=eyJrIjoiOWMwNTE5ZDYtZWIwNy00MzYxLTliYTQtODNkZDFlYjYwMTY2IiwidCI6ImYyZGE5Mzk4LWIxOWYtNDJjYy04YzFlLTA2N2Q0NTgwZjMxMiIsImMiOjl9&pageName=ReportSection
-  summary:
-  tags: ["viz"]
-  
 - name: Automobile Price Prediction In Czech Market
   logo: /images/sections/projects/python.png
   timeline: "Apr 2021"
