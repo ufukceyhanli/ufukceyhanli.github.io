@@ -1,4 +1,4 @@
-# tanerceyhanli.github.io
- My portfolio website
+# My portfolio website
+ 
 
-[tanerceyhanli.github.io](https://tanerceyhanli.github.io/)
+[ufukceyhanli.com](https://ufukceyhanli.com/)
