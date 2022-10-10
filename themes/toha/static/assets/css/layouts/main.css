@@ -15,7 +15,7 @@ Yellow:  #FFC212
 
 body {
   background-color: #f9fafc;
-  font-family: "Muli";
+  font-family: "Segoe UI";
 }
 
 h1,
@@ -157,7 +157,7 @@ img.right {
 
 .sub-title {
   color: #c0ccda;
-  font-size: 10pt;
+  font-size: 11pt;
 }
 
 /* --- FOOTER START --- */

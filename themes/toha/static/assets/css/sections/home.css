@@ -13,8 +13,8 @@
   margin: 0;
   background-attachment: fixed;
   background-position: center;
-  transform: scale(1.1);
-  filter: blur(2px);
+  transform: scale(0.96);
+  filter: blur(0px);
   background-size: cover;
 }
 
@@ -41,17 +41,17 @@
   width: 148px;
   height: 148px;
   background-color: #e7e7ef;
-  padding: 5px;
+  padding: 0px;
   margin-bottom: 10px;
 }
 
 .home .greeting {
-  color: #f9fafc;
+  color: #000000;
 }
 
 .home .typing-carousel {
   font-size: 14pt;
-  color: #f0f0f0;
+  color: #ffffff;
 }
 
 #typing-carousel-data {
@@ -61,7 +61,7 @@
 .arrow {
   position: absolute;
   color: #ffffff;
-  font-size: 1.5rem;
+  font-size: 3rem;
   bottom: 0;
 }
 

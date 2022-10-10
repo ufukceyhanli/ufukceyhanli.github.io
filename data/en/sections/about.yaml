@@ -3,7 +3,7 @@ section:
   name: About
   id: about
   enable: true
-  weight: 1
+  weight: 2
   showOnNavbar: true
   template: sections/about.html
 
@@ -14,7 +14,10 @@ section:
 resume: "files/Ufuk-Taner-CEYHANLI-Resumee.pdf"
 
 # a summary about you
-summary: 'I am a data science enthusiast with an engineering background and a master degree focusing on analytics. I have almost six years of professional work experience. I live in Prague and have a full time working allowance. No matter how complex your data is, I will solve your business problem anyway. Stay connected with me.'
+summary: 'Hi, my name is Ufuk and I am a data professional with an engineering background and a master degree focusing on analytics.
+Since I was young, I have always enjoyed to solve puzzles. 
+So that’s how I look at big data sets: to me it is one big puzzle I want to solve. Finding patterns nobody else sees is the challenge to me.
+I have worked with lots of diffrent datasets which gives me the ability to translate complex questions into understandable insights.'
 
 # your social links
 # give as many as you want. use font-awesome for the icons.
