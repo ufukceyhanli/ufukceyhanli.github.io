@@ -18,7 +18,7 @@ skills:
 - name: Data Analytics
   icon: "/images/sections/skills/data_analytics.png"
   summary: "Get more value from your data with prediction models and machine learning techniques, for example by predicting behavior or targeting the right customer."
-  url: "https://golang.org/"
+# url: "https://golang.org/"
 
 - name: Dashboards
   icon: "/images/sections/skills/dashboards.png"

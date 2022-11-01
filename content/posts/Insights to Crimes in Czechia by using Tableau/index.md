@@ -11,7 +11,7 @@ menu:
 ---
 
 Here is the story that I prepared by using Czech Statistical Office's crime data.
-I think there is no need to talk much, you may look the story of the crime data below.
+I think there is no need to talk much, you may have a look the story of the crime data below.
 <br/><br/>
 
 <iframe seamless frameborder="0" src="https://public.tableau.com/views/insights-to-crimes-in-czehia/Dashboard1?:showVizHome=no&:embed=true"

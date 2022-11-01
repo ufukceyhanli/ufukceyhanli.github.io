@@ -21,7 +21,7 @@ I am going to predict the number of borrowed bikes **in a given day and station*
 
 ## Hypothesis Generation
 
-What could effect the people to rent a bike?
+What could effect people to rent a bike?
 
 - Number of bikes
 - Condition of the bikes
