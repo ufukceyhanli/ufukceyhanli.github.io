@@ -378,8 +378,13 @@ mark {
     flex: 100%;
     max-width: 100%;
     order: 3;
+    overflow: hidden;
   }
 
+  .content {
+    overflow: hidden;
+  }
+  
   .toc-section {
     order: 2;
     width: 100%;
