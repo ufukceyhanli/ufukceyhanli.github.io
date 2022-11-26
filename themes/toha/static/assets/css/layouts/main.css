@@ -263,13 +263,13 @@ img.right {
 @media only screen and (max-width: 576px) {
   .skills-section .container,
   .projects-section .container {
-    padding-left: 0.3rem;
-    padding-right: 0.3rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .section-holder {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .skills-section,
