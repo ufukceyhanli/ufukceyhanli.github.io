@@ -15,7 +15,7 @@ Yellow:  #FFC212
 
 body {
   background-color: #f9fafc;
-  font-family: "Segoe UI";
+  font-family: "Sofia", sans-serif;
 }
 
 h1,
@@ -268,8 +268,8 @@ img.right {
   }
 
   .section-holder {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .skills-section,
