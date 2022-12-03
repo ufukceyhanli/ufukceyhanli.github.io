@@ -17,14 +17,13 @@ body {
 
 .content-section {
   flex: 60%;
-  max-width: 100%;
+  max-width: 60%;
   order: 2;
   /* background-color: lightseagreen; */
+  padding:0;
   position: relative;
-  padding-right:0;
-  padding-left:0;
-  margin-right:auto;
-  margin-left:auto
+  padding-right:1rem;
+  padding-left:1rem;
 }
 .content {
   background: #e5e9f2;

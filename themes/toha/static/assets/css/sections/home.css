@@ -18,6 +18,10 @@
   background-size: cover;
 }
 
+.arrow-center {
+  display: flex;
+  justify-content: center;
+}
 /*
   Resolves https://github.com/hossainemruz/toha/issues/70
 
@@ -41,7 +45,7 @@
   width: 148px;
   height: 148px;
   background-color: #e7e7ef;
-  padding: 0px;
+  padding: 5px;
   margin-bottom: 10px;
 }
 
@@ -61,7 +65,7 @@
 .arrow {
   position: absolute;
   color: #ffffff;
-  font-size: 3rem;
+  font-size: 2rem;
   bottom: 0;
 }
 
