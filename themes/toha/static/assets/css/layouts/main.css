@@ -64,8 +64,9 @@ a:hover {
 }
 
 .btn-outline-info {
-  color: #2098d1 !important;
-  border-color: #2098d1 !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  background-color: #f5b216;
 }
 
 .btn-outline-info:hover {
