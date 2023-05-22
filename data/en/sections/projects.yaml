@@ -1,0 +1,70 @@
+# section information
+section:
+  name: Projects
+  id: projects
+  enable: false
+  weight: 4
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# filter buttons
+buttons:
+- name: All
+  filter: "all"
+- name: Machine Learning
+  filter: "ml"
+- name: Python
+  filter: "python"
+- name: Data Visualizaton
+  filter: "viz"
+
+# your projects  
+projects:
+- name: Automobile Price Prediction In Czech Market
+  logo: /images/sections/projects/python.png
+  timeline: "Apr 2021"
+  url: https://github.com/tanerceyhanli/Automobile_Price_Prediction_In_Czech_Market
+  summary:
+  tags: ["python","viz"]
+
+- name: AB Testing Case For an E-commerce Website with Python
+  logo: /images/sections/projects/python.png
+  timeline: "Feb 2021"
+  url: https://github.com/tanerceyhanli/AB-Testing-Case-For-an-E-commerce-Website
+  summary:
+  tags: ["python"]
+  
+- name: Data Analysis of House Sales Prices and Venues in Prague with Python
+  logo: /images/sections/projects/python.png
+  timeline: "Nov 2020"
+  url: https://github.com/tanerceyhanli/Data-Analysis-of-House-Sales-Prices-and-Venues-in-Prague-with-Python
+  summary:
+  tags: ["python"]
+
+- name: Forecasting of Gasoline MED-FOB Price Based on Historical Data
+  logo: /images/sections/projects/scikit.png
+  timeline: "Jul 2020"
+  url: https://github.com/tanerceyhanli/Forecasting-of-Gasoline-MED-FOB-Price-Based-on-Historical-Data
+  summary:
+  tags: ["ml"]
+
+- name: Bike Share Demand Prediction in San Francisco
+  logo: /images/sections/projects/scikit.png
+  timeline: "Jan 2021"
+  url: https://github.com/tanerceyhanli/Bike-Share-Demand-Prediction-in-San-Francisco
+  summary:
+  tags: ["ml"]
+
+- name: Insights to Crimes in Czechia by using Tableau
+  logo: /images/sections/projects/tableau.png
+  timeline: "Dec 2020"
+  url: https://public.tableau.com/views/insights-to-crimes-in-czehia/Dashboard1?:showVizHome=no&:embed=true
+  summary: 
+  tags: ["viz"]
+- name: Insights to Food Prices in Czech Republic by using Tableau
+  logo: /images/sections/projects/tableau.png
+  timeline: "Dec 2020"
+  url: https://public.tableau.com/views/InsightofFoodPricesinCzechRepublicbyUsingTableau1100x800/Story1?:showVizHome=no&:embed=true
+  summary: 
+  tags: ["viz"]

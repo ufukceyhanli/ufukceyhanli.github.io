@@ -1,0 +1,33 @@
+# section information
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your Skills.
+# Give a summary of you each skill in the summary section.
+skills:
+- name: Data Analysis
+  icon: "/images/sections/skills/data_analysis.png"
+  summary: "I am specialized in analyzing data. Results, trends and recommendations are clearly presented in reports or tools."
+
+- name: Data Analytics
+  icon: "/images/sections/skills/data_analytics.png"
+  summary: "Get more value from your data with prediction models and machine learning techniques, for example by predicting behavior or targeting the right customer."
+# url: "https://golang.org/"
+
+- name: Dashboards
+  icon: "/images/sections/skills/dashboards.png"
+  summary: "Dashboards show the most recent results in an interactive way. By clicking and drilling, you will examine trends and patterns yourself."
+
+- name: Advice and Coaching Projects
+  icon: "/images/sections/skills/projects.png"
+  summary: "Before and during data related projects, I give advice on the progress of the project and I coach data analysts."
+
+- name: Interactive Infographics
+  icon: "/images/sections/skills/infographics.png"
+  summary: "Present your data in an inspiring way by using an infographic rather than a piece of text. I create interactive infographics which can be used internally or publicly."

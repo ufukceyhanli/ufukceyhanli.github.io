@@ -1,0 +1,49 @@
+# section information
+section:
+  name: Experiences
+  id: experiences
+  enable: false
+  weight: 3
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true 
+
+# Your experiences
+experiences:
+- company:
+    name: Ford R&D Center
+    url: "https://www.fordotosan.com.tr/en/operations/randd/randd-centers/sancaktepe-randd-center"
+    location: Istanbul
+    # company overview
+    #overview: Example Co. is a widely recognized company for cloud-native development. It builds tools for Kubernetes.
+  positions:
+  - designation: Simulation Engineer & Pyhton Developer
+    start: Nov 2017
+    end: Dec 2020
+    # don't provide end date if you are currently working there. It will be replaced by "Present"
+    # end: Dec 2020
+    # give some points about what was your responsibilities at the company.
+    responsibilities:
+    - Solve customer complaints by setting up computer simulation models. 
+    - Virtual verification and validation of chassis systems and components.
+    - Developed a python script for solid bolt generation for Abaqus. 
+    - Developed a python script for deleting unwanted sets for Ansa. 
+    - Created an API for step setup of Abaqus models.
+    
+- company:
+    name: Ford R&D Center
+    url: "https://www.fordotosan.com.tr/en/operations/randd/randd-centers/sancaktepe-randd-center"
+    location: Istanbul
+    # company overview
+    #overview: Example Co. is a widely recognized company for cloud-native development. It builds tools for Kubernetes.
+  positions:
+  - designation: Data Analyst
+    start: Mar 2015
+    end: Nov 2017
+    responsibilities:
+    - Bill of Matarial management of Ford vehicle programs. 
+    - Process, analyze and report of BOM data of the vehicle programs weekly. 
+    - BOM is a large and live data set including all the parts of the vehicle and it properties (id,cost,count,supplier,etc. ) which supports development,finance and manufacturing. 
+    - Developed a VBA script which checks BOM and list errors. 
+    - Control model finder API. 
+    - Created a tool making query on a local web page and retrieve info for BOM.

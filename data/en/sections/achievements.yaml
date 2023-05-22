@@ -1,0 +1,18 @@
+# section information
+section:
+  name: Certificates
+  id: achievements
+  enable: true
+  weight: 6
+  showOnNavbar: true
+  # Can optionally hide the title in sections
+  # hideTitle: true
+
+# Your achievements achievements
+achievements:
+- title: IBM-Data Science Professional
+  image: /images/sections/achievements/ibm.png
+  summary:
+- title: DataCamp Data Analyst Professional
+  image: /images/sections/achievements/datacamp_pro_da.png
+  summary: 

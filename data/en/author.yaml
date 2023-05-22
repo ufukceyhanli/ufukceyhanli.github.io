@@ -1,0 +1,16 @@
+# some information about you
+name: "Ufuk CEYHANLI"
+nickname: "Ufuk"
+# greeting message before your name. it will default to "Hi! I am" if not provided.
+greeting: "Hi, I am"
+image: "images/author/uc.png"
+# give your some contact information. they will be used in the footer
+contactInfo:
+  email: "contact@ufukceyhanli.com"
+  phone: "+420777655815"
+
+# some summary about what you do
+summary:
+  - Data Scientist
+  - Analytics Professional
+  - Engineer
